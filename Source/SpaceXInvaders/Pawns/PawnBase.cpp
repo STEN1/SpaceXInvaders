@@ -99,7 +99,7 @@ FHitResult APawnBase::GetFirstHitInReach(ECollisionChannel CollisionChannel, flo
         LineTraceEnd,
         FColor(0, 255, 0),
         false,
-        1.f,
+        0.f,
         0,
         5.f
     );

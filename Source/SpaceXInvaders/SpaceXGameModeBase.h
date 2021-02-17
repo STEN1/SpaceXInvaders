@@ -3,6 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+
+#include "ShipLogic.h"
+#include "Engine/TriggerVolume.h"
 #include "GameFramework/GameModeBase.h"
 
 
@@ -19,18 +23,15 @@ class SPACEXINVADERS_API ASpaceXGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 public:
+	UFUNCTION(BlueprintCallable)
+    int GetNumberOfShips() const;
 	void ActorDied(AActor* DeadActor);
-	int GetNumberOfShips() const;
 	UFUNCTION(BlueprintImplementableEvent)
 	void UpdateHealthUI(float Health, float DefaultHealth);
+	void HandleGameOver(bool PlayerWon);
 protected:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "GameLoop")
-	int32 StartDelay{3};
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "GameLoop")
-	int32 Score{0};
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "GameLoop")
-	int32 Ships{0};
+	
 	
 	virtual void BeginPlay() override;
 	UFUNCTION(BlueprintImplementableEvent)
@@ -46,15 +47,19 @@ protected:
 private:
 	APawnPlayer* Player;
 	APlayerControllerBase* PlayerControllerRef;
-	
+
+	int32 Ships{0};
 	
 	//APlayerControllerBase* PlayerControllerBaseRef;
-
+	void RestartGame();
 	int32 GetSpacecraftCount();
-	void HandleGameOver(bool PlayerWon);
+	
+	FTimerHandle RestartTimerHandle;
+
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "ShipSpawner", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<APawnEnemy> EnemyShipType;
 	void SpawnShips();
+	AShipLogic* ShipLogicRef;
 	
 };

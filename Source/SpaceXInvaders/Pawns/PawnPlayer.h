@@ -32,6 +32,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void SetMouseXInput(float Value);
 
 private:
 	void SetMoveForwardInput(float Value);
@@ -42,7 +43,7 @@ private:
 	float MoveSpeed{1200.f};
 	FVector MoveVector{FVector::ZeroVector};
 
-	void SetMouseXInput(float Value);
+	
 	void SetRotationRotator(float Yaw, float Pitch = 0.f, float Roll = 0.f);
 	float MouseXInput{0.f};
 	float RotationSpeed{2.f};

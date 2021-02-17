@@ -4,8 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "PawnBase.h"
+
+
 #include "PawnEnemy.generated.h"
 
+class AShipLogic;
 /**
  * 
  */
@@ -25,12 +28,16 @@ protected:
 	void AIMove(float MoveSpeed, float DeltaTime);
 
 private:
+	void FireWhenPlayerSpoted();
 	FTimerHandle TimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Settings", meta = (AllowPrivateAccess = "true"))
 	float FireRate{2};
 	FVector SpawnLocation;
-	bool MovingForward = false;
-	bool MovingRight = true;
+	bool bInFront{false};
+	void SetFireAtPlayerTrue();
+	bool bCanFireAtPlayer{true};
+	FTimerHandle FireAtPlayerTimerHandle;
 	ASpaceXGameModeBase* GameModeRef;
+	AShipLogic* ShipLogicRef;
 	
 };

@@ -11,6 +11,11 @@
 #include "Pawns/PawnEnemy.h"
 #include "Pawns/PawnPlayer.h"
 
+int ASpaceXGameModeBase::GetNumberOfShips() const
+{
+	return Ships;
+}
+
 void ASpaceXGameModeBase::ActorDied(AActor* DeadActor)
 {
 	if (DeadActor == Player)
@@ -35,17 +40,14 @@ void ASpaceXGameModeBase::ActorDied(AActor* DeadActor)
 	}
 }
 
-int ASpaceXGameModeBase::GetNumberOfShips() const
-{
-	return Ships;
-}
 
 void ASpaceXGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
-	SpawnShips();
+	ShipLogicRef = Cast<AShipLogic>(UGameplayStatics::GetActorOfClass(this, AShipLogic::StaticClass()));
+	ShipLogicRef->SpawnShips();
 	Ships = GetSpacecraftCount();
-	Player = Cast<APawnPlayer>(UGameplayStatics::GetPlayerController(this, 0));
+	Player = Cast<APawnPlayer>(UGameplayStatics::GetPlayerPawn(this, 0));
 	PlayerControllerRef = Cast<APlayerControllerBase>(UGameplayStatics::GetPlayerController(this, 0));
 
 	GameStart();
@@ -63,6 +65,12 @@ int ASpaceXGameModeBase::GetPlayerDefaultHealth()
 	return Player->FindComponentByClass<UHealthComponent>()->GetDefaultHealth();
 }
 
+void ASpaceXGameModeBase::RestartGame()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Restarting..."));
+	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+}
+
 int32 ASpaceXGameModeBase::GetSpacecraftCount()
 {
 	TArray<AActor*> EnemyActors;
@@ -72,6 +80,9 @@ int32 ASpaceXGameModeBase::GetSpacecraftCount()
 
 void ASpaceXGameModeBase::HandleGameOver(bool PlayerWon)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Game over"));
+	GameOver(PlayerWon);
+	GetWorld()->GetTimerManager().SetTimer(RestartTimerHandle, this, &ASpaceXGameModeBase::RestartGame, 5.f, false);
 }
 
 void ASpaceXGameModeBase::SpawnShips()

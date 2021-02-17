@@ -4,6 +4,8 @@
 #include "PawnEnemy.h"
 
 #include "SpaceXInvaders/SpaceXGameModeBase.h"
+#include "SpaceXInvaders/ShipLogic.h"
+#include "SpaceXInvaders/Pawns/PawnPlayer.h"
 
 APawnEnemy::APawnEnemy()
 {
@@ -20,6 +22,27 @@ void APawnEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	AIMove(200.f, DeltaTime);
+	if (bInFront) FireWhenPlayerSpoted();
+}
+
+void APawnEnemy::FireWhenPlayerSpoted()
+{
+	FHitResult Hit{GetFirstHitInReach(ECollisionChannel::ECC_WorldDynamic, 20000.f, false)};
+
+	if (!Hit.GetActor()) return;
+	
+	if (Hit.GetActor()->IsA(APawnPlayer::StaticClass()) && bCanFireAtPlayer)
+	{
+		Fire();
+		bCanFireAtPlayer = false;
+		GetWorld()->GetTimerManager().SetTimer(FireAtPlayerTimerHandle,this , &APawnEnemy::SetFireAtPlayerTrue, FireRate, false);
+	}
+	
+}
+
+void APawnEnemy::SetFireAtPlayerTrue()
+{
+	bCanFireAtPlayer = true;
 }
 
 void APawnEnemy::BeginPlay()
@@ -27,7 +50,8 @@ void APawnEnemy::BeginPlay()
 	Super::BeginPlay();
 	SpawnLocation = GetActorLocation();
 	GameModeRef = Cast<ASpaceXGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &APawnEnemy::CheckFriendlyFire, FireRate, true);
+	ShipLogicRef = Cast<AShipLogic>(UGameplayStatics::GetActorOfClass(this, AShipLogic::StaticClass()));
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &APawnEnemy::CheckFriendlyFire, FireRate * 2.f, true);
 }
 
 void APawnEnemy::CheckFriendlyFire()
@@ -38,54 +62,76 @@ void APawnEnemy::CheckFriendlyFire()
 	{
 		return;
 	}
-	
+	bInFront = true;
 	Fire();
 }
 
 void APawnEnemy::AIMove(float MoveSpeed, float DeltaTime)
 {
-	if(!GameModeRef) return;
 	MoveSpeed = MoveSpeed + 1000.f / (float)GameModeRef->GetNumberOfShips();
-	if (MovingForward)
+	if (ShipLogicRef->MovingForward)
 	{
-		//move forward
-		//UE_LOG(LogTemp, Warning, TEXT("MOVING FORWARD"));
 		AddActorLocalOffset(FVector::ForwardVector * MoveSpeed * DeltaTime);
-		//set spawnlocation if the ship far enough. MovingForward = false;
-		if (SpawnLocation.X - GetActorLocation().X > 50.f)
-		{
-			MovingForward = false;
-			SpawnLocation = GetActorLocation();
-		}
 	}
 	else
 	{
-		//move sideways
-		if (MovingRight)
+		if (ShipLogicRef->MovingRight)
 		{
-			//move right
-			//UE_LOG(LogTemp, Warning, TEXT("MOVING RIGHT"));
 			AddActorLocalOffset(FVector::RightVector * MoveSpeed * DeltaTime);
-			if (SpawnLocation.Y - GetActorLocation().Y > 500.f)
-			{
-				MovingForward = true;
-				MovingRight = false;
-				SpawnLocation = GetActorLocation();
-			}
 		}
 		else
 		{
-			//move left
-			//UE_LOG(LogTemp, Warning, TEXT("MOVING LEFT"));
 			AddActorLocalOffset(-FVector::RightVector * MoveSpeed * DeltaTime);
-			if (SpawnLocation.Y - GetActorLocation().Y < -500.f)
-			{
-				MovingForward = true;
-                MovingRight = true;
-				SpawnLocation = GetActorLocation();
-			}
 		}
 	}
+
+
+	
+	// Old ship moving logic. Not what i wanted.
+	//
+	// 
+	// if(!GameModeRef) return;
+	// MoveSpeed = MoveSpeed + 1000.f / (float)GameModeRef->GetNumberOfShips();
+	// if (MovingForward)
+	// {
+	// 	//move forward
+	// 	//UE_LOG(LogTemp, Warning, TEXT("MOVING FORWARD"));
+	// 	AddActorLocalOffset(FVector::ForwardVector * MoveSpeed * DeltaTime);
+	// 	//set spawnlocation if the ship far enough. MovingForward = false;
+	// 	if (SpawnLocation.X - GetActorLocation().X > 50.f)
+	// 	{
+	// 		MovingForward = false;
+	// 		SpawnLocation = GetActorLocation();
+	// 	}
+	// }
+	// else
+	// {
+	// 	//move sideways
+	// 	if (MovingRight)
+	// 	{
+	// 		//move right
+	// 		//UE_LOG(LogTemp, Warning, TEXT("MOVING RIGHT"));
+	// 		AddActorLocalOffset(FVector::RightVector * MoveSpeed * DeltaTime);
+	// 		if (SpawnLocation.Y - GetActorLocation().Y > 500.f)
+	// 		{
+	// 			MovingForward = true;
+	// 			MovingRight = false;
+	// 			SpawnLocation = GetActorLocation();
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		//move left
+	// 		//UE_LOG(LogTemp, Warning, TEXT("MOVING LEFT"));
+	// 		AddActorLocalOffset(-FVector::RightVector * MoveSpeed * DeltaTime);
+	// 		if (SpawnLocation.Y - GetActorLocation().Y < -500.f)
+	// 		{
+	// 			MovingForward = true;
+ //                MovingRight = true;
+	// 			SpawnLocation = GetActorLocation();
+	// 		}
+	// 	}
+	// }
 }
 
 

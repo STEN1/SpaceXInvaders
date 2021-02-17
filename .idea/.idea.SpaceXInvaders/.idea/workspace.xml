@@ -4,15 +4,42 @@
     <projectFile>Intermediate/ProjectFiles/SpaceXInvaders.vcxproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4aa26a0b-a943-4fdf-84d2-e7de5cc1e1c0" name="Default Changelist" comment="" />
+    <list default="true" id="4aa26a0b-a943-4fdf-84d2-e7de5cc1e1c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Actors/BP_ShipLogic.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Widgets/WBP_GameOver.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/ShipLogic.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/ShipLogic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SpaceXInvaders/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SpaceXInvaders/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SpaceXInvaders/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SpaceXInvaders/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_SpaceXGameModeBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_SpaceXGameModeBase.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Pawns/BP_PawnEnemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Pawns/BP_PawnEnemy.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Pawns/BP_PawnPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Pawns/BP_PawnPlayer.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Level01.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Level01.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/Actors/Projectile/ProjectileBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/Actors/Projectile/ProjectileBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/PlayerControllerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/PlayerControllerBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/SpaceXGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/SpaceXGameModeBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SpaceXInvaders/SpaceXGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SpaceXInvaders/SpaceXGameModeBase.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://D:/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Templates/PointerIsConvertibleFromTo.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBaseUtility.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/InputComponent.h" root0="FORCE_HIGHLIGHTING" />
@@ -21,27 +48,34 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Source/SpaceXInvaders/PlayerControllerBase.h" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/PlayerControllerBase.cpp" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Actors/Projectile/ProjectileBase.cpp" />
       <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Actors/Projectile/ProjectileBase.h" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnBase.cpp" />
       <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnBase.h" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.h" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.cpp" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/SpaceXGameModeBase.h" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.h" />
-      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.cpp" />
       <option value="$PROJECT_DIR$/Source/SpaceXInvaders/ActorComponents/HealthComponent.h" />
       <option value="$PROJECT_DIR$/Source/SpaceXInvaders/ActorComponents/HealthComponent.cpp" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.h" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnPlayer.cpp" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/PlayerControllerBase.cpp" />
       <option value="$PROJECT_DIR$/Source/SpaceXInvaders/SpaceXGameModeBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/SpaceXGameModeBase.h" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Actors/Projectile/ProjectileBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.h" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/ShipLogic.h" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/Pawns/PawnEnemy.cpp" />
+      <option value="$PROJECT_DIR$/Source/SpaceXInvaders/ShipLogic.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oNJeuggtWaw5Id9J5YpXGQmev1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -275,6 +309,8 @@
       <workItem from="1613212575814" duration="8368000" />
       <workItem from="1613292262972" duration="2900000" />
       <workItem from="1613298235126" duration="8115000" />
+      <workItem from="1613487979822" duration="4779000" />
+      <workItem from="1613569868536" duration="6310000" />
     </task>
     <servers />
   </component>
@@ -283,7 +319,20 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>

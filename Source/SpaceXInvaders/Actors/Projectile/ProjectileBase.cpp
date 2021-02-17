@@ -3,6 +3,8 @@
 
 #include "ProjectileBase.h"
 
+#include "Engine/TriggerVolume.h"
+
 // Sets default values
 AProjectileBase::AProjectileBase()
 {
@@ -43,6 +45,10 @@ void AProjectileBase::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AAc
 {
 	AActor* MyOwner = GetOwner();
 	if (!MyOwner)
+	{
+		return;
+	}
+	if (OtherActor->IsA(ATriggerVolume::StaticClass()))
 	{
 		return;
 	}
