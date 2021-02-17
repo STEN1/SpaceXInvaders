@@ -1,2 +1,2 @@
 # SpaceXInvaders
- SpaceX Invaders game for programming 2
+ SpaceX Invaders. Game for programming 2
