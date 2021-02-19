@@ -43,7 +43,7 @@ void APawnPlayer::Tick(float DeltaTime)
 	//float MouseX;
 	//float MouseY;
 	//UGameplayStatics::GetPlayerController(this, 0)->GetInputMouseDelta(MouseX, MouseY);
-	float MouseXClamped{FMath::Clamp(MouseXInput, -4.f, 4.f)};
+	float MouseXClamped{FMath::Clamp(MouseXInput, -8.f, 8.f)};
 	//UE_LOG(LogTemp, Warning, TEXT("MouseXDelta: %f"), MouseX);
 	//SetMoveVector(MoveForwardInput, MoveRightInput);
 	//SetRotationRotator(MouseX);
